@@ -50,7 +50,7 @@ services:
       - ./nginx/logs:/var/log/nginx
     networks:
       - app-network
-    command: /bin/bash -c "envsubst < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'"
+    command: /bin/bash -c "envsubst \${MAIN_DOMAIN} < /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/conf.d/nginx.conf && nginx -g 'daemon off;'"
 
   certbot:
     depends_on:
