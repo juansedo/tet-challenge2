@@ -8,6 +8,9 @@ Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que
 
 Al acceder a GCP, ...
 
+![image](https://user-images.githubusercontent.com/52968530/138364996-75e63672-050f-453d-999f-475aaf4b5547.png)
+
+
 Los comandos más fundamentales son:
 ```
 # Updating system
