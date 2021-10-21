@@ -10,6 +10,8 @@ Al acceder a GCP, ...
 
 ![image](https://user-images.githubusercontent.com/52968530/138364996-75e63672-050f-453d-999f-475aaf4b5547.png)
 
+![image](https://user-images.githubusercontent.com/52968530/138367543-081d2bbd-fc6c-4d8f-bcc9-2b50e7a085a5.png)
+
 
 Los comandos más fundamentales son:
 ```
