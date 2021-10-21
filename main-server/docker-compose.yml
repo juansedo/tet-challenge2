@@ -59,7 +59,7 @@ services:
     volumes:
       - certbot-etc:/etc/letsencrypt
       - wordpress:/var/www/html
-    command: certonly --webroot --webroot-path=/var/www/html --email $EMAIL_DOMAIN --agree-tos --no-eff-email -d $MAIN_DOMAIN -d www.$MAIN_DOMAIN -d gallery.$MAIN_DOMAIN
+    command: certonly --webroot --webroot-path=/var/www/html --email $EMAIL_DOMAIN --agree-tos --no-eff-email -d $MAIN_DOMAIN -d www.$MAIN_DOMAIN
 #    command: delete --cert-name $MAIN.DOMAIN
 
 volumes:
