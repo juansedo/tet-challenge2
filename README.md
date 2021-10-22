@@ -12,7 +12,8 @@ Utilizando el Compute Engine de GCP, montamos las instancias de VM para nuestra 
 
 Para ambas máquinas, la configuración de disco y de firewall es esta:
 
-IMAGENES
+![image](https://user-images.githubusercontent.com/52968530/138375330-1400117b-c5c0-4567-8c17-67f6f63a79f1.png)
+![image](https://user-images.githubusercontent.com/52968530/138375347-1d09db93-65f7-4d77-8d24-8ef10789b5e6.png)
 
 Ya en cada máquina, los comandos de configuración inicial son:
 ```
@@ -29,13 +30,13 @@ git clone https://github.com/juansedo/tet-challenge2.git
 ```
 
 ## Configuración de DNS
-<p align="center">IMAGEN</p>
+<p align="center"><img src="https://user-images.githubusercontent.com/52968530/138371468-5d345846-7aa0-4fff-a884-a691c46493ae.png" /></p>
 
-Ya que tenemos las IP públicas de las máquinas, con el servicio de Freenom se puede solicitar un dominio bastante fácil. Luego de conseguir un dominio gratuito, la configuración en freenom queda así:
+Ya que tenemos las IP públicas de las máquinas, con el servicio de Freenom se puede solicitar un dominio. Luego de conseguirlo, la configuración del DNS queda así:
 
+![image](https://user-images.githubusercontent.com/52968530/138375204-f15e97eb-038c-4275-bb13-1894179da6ba.png)
 
-
-
+Siendo 34.125.43.6 la IP de nuestro `main-server` y 34.125.252.186 la IP de nuestro `gallery-server`.
 
 ## Inicio de los servidores
 
