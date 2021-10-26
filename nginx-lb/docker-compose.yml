@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  webserver:
+    image: nginx
+    container_name: webserver
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - ./nginx/logs:/var/log/nginx
+
+  certbot:
+    depends_on:
+      - webserver
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - wordpress:/var/www/html
+    command: certonly --webroot --webroot-path=/var/www/html --email $EMAIL_DOMAIN --agree-tos --no-eff-email -d $MAIN_DOMAIN -d www.$MAIN_DOMAIN
+#    command: delete --cert-name $MAIN_DOMAIN
+
+volumes:
+  certbot-etc:
+  wordpress:
