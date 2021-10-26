@@ -11,6 +11,7 @@ services:
     volumes:
       - wordpress:/var/www/html
       - certbot-etc:/etc/letsencrypt
+      - ./nginx:/etc/nginx/conf.d
       - ./nginx/logs:/var/log/nginx
 
   certbot:
