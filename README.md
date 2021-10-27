@@ -16,12 +16,14 @@ Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que
 
 Utilizando el Compute Engine de GCP, montamos las instancias de VM para nuestra infraestructura. Las VM implementadas son los `main` servers, los `gallery` servers y los `load-balancer` servers.
 
-Para los load balancer, la configuración de disco y de firewall es esta:
+En la siguiente tabla se resumen las configuraciones iniciales:
 
-![image](https://user-images.githubusercontent.com/52968530/138375330-1400117b-c5c0-4567-8c17-67f6f63a79f1.png)
-![image](https://user-images.githubusercontent.com/52968530/138375347-1d09db93-65f7-4d77-8d24-8ef10789b5e6.png)
+|**Servidor**|**Configuración**|
+|-----|-----|
+|`load-balancer`|![image](https://user-images.githubusercontent.com/52968530/139148172-d2d79966-0ad8-4bd9-9c5f-b7ec0fe5e426.png)<br/>![image](https://user-images.githubusercontent.com/52968530/139148409-082557b9-1a36-4a9c-beb0-dfebabb4feb1.png)<br/>![image](https://user-images.githubusercontent.com/52968530/139148508-2afd49ea-a75d-4d39-861b-8915f1b7a840.png)|
+|`main` y `gallery`|![image](https://user-images.githubusercontent.com/52968530/139148172-d2d79966-0ad8-4bd9-9c5f-b7ec0fe5e426.png)<br/>![image](https://user-images.githubusercontent.com/52968530/139148409-082557b9-1a36-4a9c-beb0-dfebabb4feb1.png)<br/>![image](https://user-images.githubusercontent.com/52968530/139148892-b6934608-97d7-444e-beda-17515223b156.png)|
 
-Ya en cada máquina, los comandos de configuración inicial son:
+Cada máquina se configuró con los siguientes comandos:
 ```
 # Updating system
 sudo apt update -y && sudo apt upgrade -y
@@ -38,35 +40,41 @@ git clone https://github.com/juansedo/tet-challenge2.git
 ## Configuración de DNS
 <p align="center"><img src="https://user-images.githubusercontent.com/52968530/138371468-5d345846-7aa0-4fff-a884-a691c46493ae.png" /></p>
 
-Ya que tenemos las IP públicas de las máquinas, con el servicio de Freenom se puede solicitar un dominio. Luego de conseguirlo, la configuración del DNS queda así:
+Ya que tenemos las IP públicas de las máquinas, con el servicio de Freenom se puede solicitar un dominio gratuito. La configuración del DNS queda así:
 
-![image](https://user-images.githubusercontent.com/52968530/138375204-f15e97eb-038c-4275-bb13-1894179da6ba.png)
-
-Siendo 34.125.43.6 la IP de nuestro `main-server` y 34.125.252.186 la IP de nuestro `gallery-server`.
+![image](https://user-images.githubusercontent.com/52968530/139149976-b13fffca-8ee5-46ed-98e4-0dd2e00426b6.png)
 
 ## Inicio de los servidores
 
 Aquí se diferencian los dos servidores que se tienen en el mismo repositorio. Por lo que se puede ejecutar uno u otro:
 
 ```
-# Starting main-server
-cd tet-challenge2/main-server/
+# Starting main
+cd tet-challenge2/wordpress/
 cp .env.example .env
 sudo docker-compose up -d
 
-# Starting gallery-server
-cd tet-challenge2/gallery-server/
+# Starting gallery
+cd tet-challenge2/wordpress/
+cp .env.example2 .env
+sudo docker-compose up -d
+
+# Starting load balancer for main
+cd tet-challenge2/load-balancer/lb-main
 cp .env.example .env
+sudo nano nginx/nginx.conf # Check and update upstream ip's
 sudo docker-compose up -d
 ```
 
-### `main-server`
+### `main`
 
 Este servidor contiene la página inicial del proyecto con un feed donde se pueden visualizar los proyectos de P1 y P2. La parte visual se realizó de forma manual manteniendo el volumen `wordpress` con esta información.
 
-### `gallery-server`
+### `gallery`
 
 Este servidor contiene una galería de distribución aleatoria de los proyectos de P1 y P2. La parte visual se realizó de forma manual manteniendo el volumen `wordpress` con esta información.
+
+### `load balancer`
 
 
 
