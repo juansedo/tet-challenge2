@@ -4,13 +4,19 @@ En este documento se explicará con detalle técnico el desarrollo de este proye
 
 Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que los nombres harán referencias a configuraciones de esta plataforma, pero puede hacerse lo mismo en otras IaaS.
 
+## Diseño lógico de la implementación
+...
+
+## Diseño técnico de la implementación
+...
+
 ## Configuración e inicialización de instancias
 
 <p align="center"><img src="https://user-images.githubusercontent.com/52968530/138364996-75e63672-050f-453d-999f-475aaf4b5547.png" /></p>
 
-Utilizando el Compute Engine de GCP, montamos las instancias de VM para nuestra infraestructura. Vamos a explicar el `main-server` y el `gallery-server`.
+Utilizando el Compute Engine de GCP, montamos las instancias de VM para nuestra infraestructura. Las VM implementadas son los `main` servers, los `gallery` servers y los `load-balancer` servers.
 
-Para ambas máquinas, la configuración de disco y de firewall es esta:
+Para los load balancer, la configuración de disco y de firewall es esta:
 
 ![image](https://user-images.githubusercontent.com/52968530/138375330-1400117b-c5c0-4567-8c17-67f6f63a79f1.png)
 ![image](https://user-images.githubusercontent.com/52968530/138375347-1d09db93-65f7-4d77-8d24-8ef10789b5e6.png)
