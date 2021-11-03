@@ -5,12 +5,21 @@ services:
     image: wordpress:fpm-alpine
     container_name: wordpress
     restart: unless-stopped
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
     env_file: .env
     environment:
       - WORDPRESS_DB_HOST=$DB_SERVER:3306
       - WORDPRESS_DB_USER=$MYSQL_USER
       - WORDPRESS_DB_PASSWORD=$MYSQL_PASSWORD
       - WORDPRESS_DB_NAME=wordpress
+      - W3TC_CONFIG_CACHE_ENGINE=redis
+      - W3TC_CONFIG_CACHE_REDIS_SERVERS=redis:6379
+      - W3TC_CONFIG_CACHE_REDIS_PERSISTENT=true
+      - W3TC_CONFIG_CACHE_REDIS_DBID=0
+      - W3TC_CONFIG_CACHE_REDIS_PASSWORD=''
     volumes:
       - wordpress:/var/www/html
     networks:
@@ -31,6 +40,19 @@ services:
       - ./nginx/logs:/var/log/nginx
     networks:
       - app-network
+
+  cache:
+    image: redis:6
+    restart: always
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+    ports:
+      - "6379:6379"
+    networks:
+      - app-network
+    entrypoint: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
 
 volumes:
   wordpress:
