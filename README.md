@@ -12,7 +12,7 @@ Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que
 
 ## Configuración e inicialización de instancias
 
-<p align="center"><img src="https://user-images.githubusercontent.com/52968530/138364996-75e63672-050f-453d-999f-475aaf4b5547.png" /></p>
+<p align="center"><img width="300px" src="https://user-images.githubusercontent.com/52968530/138364996-75e63672-050f-453d-999f-475aaf4b5547.png" /></p>
 
 Utilizando el Compute Engine de GCP, montamos las instancias de VM para nuestra infraestructura. Las VM implementadas son los `main` servers, los `gallery` servers y los `load-balancer` servers.
 
@@ -38,7 +38,7 @@ git clone https://github.com/juansedo/tet-challenge2.git
 ```
 
 ## Configuración de DNS
-<p align="center"><img src="https://user-images.githubusercontent.com/52968530/138371468-5d345846-7aa0-4fff-a884-a691c46493ae.png" /></p>
+<p align="center"><img width="300px" src="https://user-images.githubusercontent.com/52968530/138371468-5d345846-7aa0-4fff-a884-a691c46493ae.png" /></p>
 
 Ya que tenemos las IP públicas de las máquinas, con el servicio de Freenom se puede solicitar un dominio gratuito. La configuración del DNS queda así:
 
@@ -76,6 +76,23 @@ Este servidor contiene una galería de distribución aleatoria de los proyectos 
 
 ### `load balancer`
 
+Este servidor despliega un contenedor `nginx` con la configuración necesaria para tener un balanceador de carga. Dado que el archivo `nginx` no se puede controlar con variables de entorno de forma simple, se creó la configuración específica de cada balanceador (uno por página) y por esto dos carpetas.
+
+## Plugins de Wordpress
+
+En Wordpress e hicieron configuraciones adicionales correspondientes a la instalación de plugins que permitieran configuraciones adicionales como el *Single Sign On* y el *Two Factor Authentication*. Mencionaremos los instalados y una guía oficial que utilizamos para la configuración de los servicios:
+
+### Single Sign On con Auth0
+...
+
+### Two Factor Authentication con Auth0
+...
+
+
+
+## Content Delivery Network (CDN)
+<p align="center"><img width="300px" src="https://mma.prnewswire.com/media/1344798/CDN_net_Logo.jpg?p=twitter" /></p>
+Utilizamos la prueba gratuita de 14 días de cdn.net, la cuál decidimos solo implementar en la página principal y en un subdominio para simplificar la presentación de lo que se ha implementado.
 
 
 ## Participantes 🚹
