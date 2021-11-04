@@ -1,6 +1,6 @@
 # Proyecto 2 - Tópicos especiales en Telemática 📶
 
-En este documento se explicará con detalle técnico el desarrollo de este proyecto, así como los pasos para instalarse y poder replicar nuestros resultados.
+En este documento se explicará con detalle técnico y de instalación el desarrollo de este proyecto, así como los pasos para instalarse y poder replicar nuestros resultados.
 
 Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que los nombres harán referencias a configuraciones de esta plataforma, pero puede hacerse lo mismo en otras IaaS.
 
@@ -78,21 +78,39 @@ Este servidor contiene una galería de distribución aleatoria de los proyectos 
 
 Este servidor despliega un contenedor `nginx` con la configuración necesaria para tener un balanceador de carga. Dado que el archivo `nginx` no se puede controlar con variables de entorno de forma simple, se creó la configuración específica de cada balanceador (uno por página) y por esto dos carpetas.
 
-## Plugins de Wordpress
-
-En Wordpress e hicieron configuraciones adicionales correspondientes a la instalación de plugins que permitieran configuraciones adicionales como el *Single Sign On* y el *Two Factor Authentication*. Mencionaremos los instalados y una guía oficial que utilizamos para la configuración de los servicios:
-
-### Single Sign On con Auth0
-...
-
-### Two Factor Authentication con Auth0
-...
-
-
 
 ## Content Delivery Network (CDN)
 <p align="center"><img width="300px" src="https://mma.prnewswire.com/media/1344798/CDN_net_Logo.jpg?p=twitter" /></p>
 Utilizamos la prueba gratuita de 14 días de cdn.net, la cuál decidimos solo implementar en la página principal y en un subdominio para simplificar la presentación de lo que se ha implementado.
+
+Así, la ruta http://cdn.proyecto2-tet.tk es el proyecto gestionado por un CDN.
+
+## Reportes `uptime` del servidor
+<p align="center"><img width="300px" src="https://user-images.githubusercontent.com/52968530/140233371-f9554009-49dc-434e-8ad4-15fddbe719da.png" /></p>
+
+Para generar estos reportes escogimos una cuenta gratuita de Site24x7 que permite generar reportes de estado de salud de los servicios, monitorear sus certificados, verificar tiempos de carga e incluso analizar servicios o máquinas VM de nubes específicas (GCP, AWS, etc). Incluye notificaciones al correo de cambios de estado.
+<p align="center"><img width="400px" src="https://user-images.githubusercontent.com/52968530/140232892-865fffa9-4537-4df2-82f1-9fd4ec15cb10.png" /></p>
+
+
+## Plugins de Wordpress
+
+En Wordpress se hicieron configuraciones adicionales correspondientes a la instalación de plugins que permitieran configuraciones adicionales como el *Single Sign On* y el *Two Factor Authentication*. Mencionaremos los instalados y una guía oficial que utilizamos para la configuración de los servicios:
+
+### Single Sign On
+<img width="200px" src="https://www.drupal.org/files/project-images/brand%20evolution_logo_Auth0_black.png" alt="auth0-logo">
+Configuración hecha con Auth0 y ampliamente guiada por esta guía:
+https://auth0.com/blog/wordpress-sso-with-auth0/
+
+### Two Factor Authentication
+<img width="200px" src="https://www.drupal.org/files/project-images/brand%20evolution_logo_Auth0_black.png" alt="auth0-logo">
+Configuración hecha con Auth0 y ampliamente guiada por esta guía:
+https://auth0.com/docs/login/mfa/mfa-factors/configure-sms-voice-notifications-mfa
+
+### Database and Page Cache (NO FUNCIONÓ EN LA IMPLEMENTACIÓN)
+<img width="200px" src="https://onlinezebra.com/wp-content/uploads/2021/03/w3-total-cache-logo.png" alt="w3tc-logo">
+<img width="200px" src="https://yosoy.dev/wp-content/uploads/2017/12/Redis_Logo.png" alt="redis-logo">
+Configuración hecha con W3 Total Cache y Redis
+https://thibaut-deveraux.medium.com/a-docker-compose-file-to-install-wordpress-with-a-traefik-reverse-proxy-an-ssl-certificate-and-a-e878c2a03a17
 
 
 ## Participantes 🚹
