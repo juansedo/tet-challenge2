@@ -5,10 +5,7 @@ En este documento se explicará con detalle técnico y de instalación el desarr
 Este proyecto fue desarrollado en GCP con algunas de sus herramientas por lo que los nombres harán referencias a configuraciones de esta plataforma, pero puede hacerse lo mismo en otras IaaS.
 
 ## Diseño lógico de la implementación
-...
-
-## Diseño técnico de la implementación
-...
+![A](https://user-images.githubusercontent.com/53051441/140453547-66ec9f20-d62e-4872-86a0-adf11138c40c.png)
 
 ## Configuración e inicialización de instancias
 
